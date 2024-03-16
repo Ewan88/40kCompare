@@ -84,3 +84,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+input {
+	background-color: var(--color-background-soft);
+	color: var(--color-text--weak);
+	border: 1px solid var(--color-border);
+	max-width: 100%;
+}
