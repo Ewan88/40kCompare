@@ -32,7 +32,7 @@
 
 		&:hover,
 		&:focus {
-			outline: 1px solid #fff;
+			outline: 1px solid #7c7c7c;
 		}
 
 		&:last-child:hover,

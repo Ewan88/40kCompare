@@ -7,7 +7,7 @@
 	<td>{{ weapon.ArmourPiercing }}</td>
 	<td>{{ weapon.Damage }}</td>
 	<td>{{ weapon.Abilities }}</td>
-	<td class="button red">❌</td>
+	<td class="button red" @click="deleteWeapon">❌</td>
 </template>
 
 <script lang="ts">
@@ -17,6 +17,11 @@
 			weapon: {
 				type: Object,
 				required: true,
+			},
+		},
+		methods: {
+			deleteWeapon() {
+				this.$emit('delete-weapon');
 			},
 		},
 	});

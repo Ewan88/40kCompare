@@ -19,6 +19,9 @@
 				console.log(weapon);
 				this.weapons.push(weapon as Weapon);
 			},
+			deleteWeaponFromList(index: number) {
+				this.weapons.splice(index, 1);
+			},
 		},
 	});
 </script>
@@ -39,7 +42,10 @@
 			<AddWeapon @add-weapon="addWeaponToList" />
 		</tr>
 		<tr v-for="(weapon, index) in weapons" :key="index">
-			<WeaponCard :weapon="weapon" />
+			<WeaponCard
+				:weapon="weapon"
+				@delete-weapon="deleteWeaponFromList(index)"
+			/>
 		</tr>
 	</table>
 </template>
