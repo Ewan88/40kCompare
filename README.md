@@ -8,6 +8,8 @@ This is a web app for comparing Warhammer 40k units and weapons.
 - [] Add a unit and its stats
 - [] Compare two units
 - [] Compare two weapons
+- [] Add units to an army list
+- [] Count the number of points in an army list
 - [] download the data as a JSON file
 - [] store the data in a database
 

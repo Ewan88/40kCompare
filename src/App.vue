@@ -1,14 +1,8 @@
 <script lang="ts">
 	import { defineComponent } from 'vue';
-	import AddWeapon from './components/AddWeapon.vue';
-	import WeaponCard from './components/WeaponCard.vue';
 
 	export default defineComponent({
 		name: 'App',
-		components: {
-			AddWeapon: AddWeapon,
-			WeaponCard: WeaponCard,
-		},
 		data() {
 			return {
 				weapons: [] as Weapon[],
@@ -27,25 +21,12 @@
 </script>
 
 <template>
-	<table>
-		<tr>
-			<th></th>
-			<th>R</th>
-			<th>A</th>
-			<th>BS</th>
-			<th>S</th>
-			<th>AP</th>
-			<th>D</th>
-			<th></th>
-		</tr>
-		<tr>
-			<AddWeapon @add-weapon="addWeaponToList" />
-		</tr>
-		<tr v-for="(weapon, index) in weapons" :key="index">
-			<WeaponCard
-				:weapon="weapon"
-				@delete-weapon="deleteWeaponFromList(index)"
-			/>
-		</tr>
-	</table>
+	<h1>40K Compare</h1>
+	<nav>
+		<RouterLink to="/">Units</RouterLink>
+		<RouterLink to="/weapons">Weapons</RouterLink>
+	</nav>
+	<main>
+		<RouterView />
+	</main>
 </template>

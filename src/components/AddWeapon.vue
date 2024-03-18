@@ -144,5 +144,6 @@
 				});
 			},
 		},
+		emits: ['add-weapon'],
 	});
 </script>
