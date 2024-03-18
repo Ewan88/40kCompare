@@ -50,7 +50,7 @@
 	}
 
 	.button {
-		padding-left: 15px;
+		padding-left: 17px;
 	}
 </style>
 
