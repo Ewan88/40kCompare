@@ -1,6 +1,8 @@
-# 40kcompare
+# 40kcompare v.0.1.0
 
-This is a web app for comparing Warhammer 40k units and weapons.
+This is a web app for building army lists and comparing the stats of Warhammer 40k units or weapons.
+
+It is not a compendium of all the units and weapons in the game. You will need to add those yourself.
 
 ### MVP
 
@@ -11,7 +13,12 @@ This is a web app for comparing Warhammer 40k units and weapons.
 - [] Add units to an army list
 - [] Count the number of points in an army list
 - [] download the data as a JSON file
+
+### Stretch Goals
+
 - [] store the data in a database
+- [] edit weapons and units
+- [] rearrange the order of weapons and units
 
 ## Recommended IDE Setup
 
