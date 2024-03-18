@@ -1,6 +1,15 @@
 # 40kcompare
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a web app for comparing Warhammer 40k units and weapons.
+
+### MVP
+
+- [x] Add a weapon and its stats
+- [] Add a unit and its stats
+- [] Compare two units
+- [] Compare two weapons
+- [] download the data as a JSON file
+- [] store the data in a database
 
 ## Recommended IDE Setup
 
@@ -37,3 +46,4 @@ npm run build
 ```sh
 npm run lint
 ```
+
