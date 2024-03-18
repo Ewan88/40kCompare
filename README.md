@@ -5,7 +5,7 @@ This is a web app for comparing Warhammer 40k units and weapons.
 ### MVP
 
 - [x] Add a weapon and its stats
-- [] Add a unit and its stats
+- [x] Add a unit and its stats
 - [] Compare two units
 - [] Compare two weapons
 - [] Add units to an army list
