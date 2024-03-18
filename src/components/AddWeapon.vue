@@ -1,27 +1,35 @@
 <template>
 	<td>
-		<input type="text" v-model="Weapon" />
+		<input type="text" v-model="Weapon" @keyup.enter="addWeapon" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Range" />
+		<input type="number" v-model.number="Range" @keyup.enter="addWeapon" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Attacks" />
+		<input type="number" v-model.number="Attacks" @keyup.enter="addWeapon" />
 	</td>
 	<td>
-		<input type="number" v-model.number="BallisticSkill" />
+		<input
+			type="number"
+			v-model.number="BallisticSkill"
+			@keyup.enter="addWeapon"
+		/>
 	</td>
 	<td>
-		<input type="number" v-model.number="Strength" />
+		<input type="number" v-model.number="Strength" @keyup.enter="addWeapon" />
 	</td>
 	<td>
-		<input type="number" v-model.number="ArmourPiercing" />
+		<input
+			type="number"
+			v-model.number="ArmourPiercing"
+			@keyup.enter="addWeapon"
+		/>
 	</td>
 	<td>
-		<input type="number" v-model.number="Damage" />
+		<input type="number" v-model.number="Damage" @keyup.enter="addWeapon" />
 	</td>
 	<td>
-		<input type="text" v-model="Abilities" />
+		<input type="text" v-model="Abilities" @keyup.enter="addWeapon" />
 	</td>
 	<td v-if="Weapon !== ''" class="button green" @click="addWeapon">✅</td>
 </template>
@@ -132,6 +140,17 @@
 		},
 		methods: {
 			addWeapon() {
+				if (
+					!this.Weapon ||
+					this.Range < 0 ||
+					this.Attacks < 0 ||
+					this.BallisticSkill < 0 ||
+					this.Strength < 0 ||
+					this.ArmourPiercing > 0 ||
+					this.Damage < 0
+				) {
+					return;
+				}
 				this.$emit('add-weapon', {
 					Weapon: this.Weapon,
 					Range: this.Range,

@@ -1,30 +1,35 @@
 <template>
 	<td>
-		<input type="text" v-model="Unit" />
+		<!-- Input field with event listener -->
+		<input type="text" v-model="Unit" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Movement" />
+		<input type="number" v-model.number="Movement" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Toughness" />
+		<input type="number" v-model.number="Toughness" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Save" />
+		<input type="number" v-model.number="Save" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Wounds" />
+		<input type="number" v-model.number="Wounds" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Leadership" />
+		<input type="number" v-model.number="Leadership" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="ObjectiveControl" />
+		<input
+			type="number"
+			v-model.number="ObjectiveControl"
+			@keyup.enter="addUnit"
+		/>
 	</td>
 	<td>
-		<input type="text" v-model="Abilities" />
+		<input type="text" v-model="Abilities" @keyup.enter="addUnit" />
 	</td>
 	<td>
-		<input type="number" v-model.number="Points" />
+		<input type="number" v-model.number="Points" @keyup.enter="addUnit" />
 	</td>
 	<td v-if="Unit !== '' && Points !== 0" class="button green" @click="addUnit">
 		✅
@@ -115,11 +120,11 @@
 			watch(
 				() => this.Leadership,
 				(newVal) => {
-					if (newVal > 0) {
+					if (newVal < 0) {
 						this.Leadership = 0;
 					}
-					if (newVal < -99) {
-						this.Leadership = -99;
+					if (newVal > 99) {
+						this.Leadership = 99;
 					}
 				},
 			);
@@ -148,6 +153,24 @@
 		},
 		methods: {
 			addUnit() {
+				if (
+					!this.Unit ||
+					this.Points <= 0 ||
+					this.Movement < 0 ||
+					this.Movement > 99 ||
+					this.Toughness < 0 ||
+					this.Toughness > 99 ||
+					this.Save < 0 ||
+					this.Save > 99 ||
+					this.Wounds < 0 ||
+					this.Wounds > 99 ||
+					this.Leadership < 0 ||
+					this.Leadership > 99 ||
+					this.ObjectiveControl < 0 ||
+					this.ObjectiveControl > 99
+				) {
+					return;
+				}
 				this.$emit('add-unit', {
 					Unit: this.Unit,
 					Movement: this.Movement,
