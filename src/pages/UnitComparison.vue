@@ -17,8 +17,22 @@
 		<tr v-for="(unit, index) in units" :key="index">
 			<UnitCard :unit="unit" @delete-unit="deleteUnitFromList(index)" />
 		</tr>
+		<tr v-if="units.length > 0">
+			<td colspan="8" class="hidden"></td>
+			<td class="total">{{ countPoints() }}</td>
+		</tr>
 	</table>
 </template>
+
+<style scoped>
+	.hidden {
+		border: none;
+	}
+
+	.total {
+		font-weight: bold;
+	}
+</style>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
@@ -37,6 +51,13 @@
 			};
 		},
 		methods: {
+			countPoints() {
+				let total = 0;
+				this.units.forEach((unit) => {
+					total += unit.Points;
+				});
+				return total;
+			},
 			addUnitToList(unit: Unit) {
 				console.log(unit);
 				this.units.push(unit as Unit);
