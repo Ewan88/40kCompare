@@ -8,6 +8,8 @@ It is not a compendium of all the units and weapons in the game. You will need t
 
 - [x] Add a weapon and its stats
 - [x] Add a unit and its stats
+- [] Give a unit an enhancement which increases its points cost
+- [] Copy a unit
 - [] Compare two units
 - [] Compare two weapons
 - [] Add units to an army list
