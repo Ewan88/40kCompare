@@ -28,6 +28,7 @@
 		<tr v-if="units.length > 0">
 			<td colspan="8" class="hidden"></td>
 			<td class="total">{{ countPoints() }}</td>
+			<td class="button" @click="saveArmy()">💾</td>
 		</tr>
 	</table>
 </template>
@@ -44,12 +45,17 @@
 	.total {
 		font-weight: bold;
 	}
+
+	.button:hover {
+		color: white;
+	}
 </style>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 	import AddUnit from '../components/AddUnit.vue';
 	import UnitCard from '../components/UnitCard.vue';
+	import { useStore } from '../store';
 
 	export default defineComponent({
 		name: 'App',
@@ -60,6 +66,8 @@
 		data() {
 			return {
 				units: [] as Unit[],
+				editing: false,
+				points: 0,
 			};
 		},
 		methods: {
@@ -68,6 +76,7 @@
 				this.units.forEach((unit) => {
 					total += unit.Points;
 				});
+				this.points = total;
 				return total;
 			},
 			addUnitToList(unit: Unit) {
@@ -76,6 +85,20 @@
 			},
 			deleteUnitFromList(index: number) {
 				this.units.splice(index, 1);
+			},
+			saveArmy() {
+				const store = useStore();
+				store.saveArmy(this.units, this.points);
+			},
+			downloadArmy() {
+				const jsonUnits = JSON.stringify(this.units);
+				const blob = new Blob([jsonUnits], { type: 'application/json' });
+				const url = URL.createObjectURL(blob);
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = 'unitList.json';
+				link.click();
+				URL.revokeObjectURL(url);
 			},
 		},
 	});

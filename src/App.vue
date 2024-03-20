@@ -25,6 +25,7 @@
 	<nav>
 		<RouterLink to="/">Units</RouterLink>
 		<RouterLink to="/weapons">Weapons</RouterLink>
+		<RouterLink to="/armies">Armies</RouterLink>
 	</nav>
 	<main>
 		<RouterView />

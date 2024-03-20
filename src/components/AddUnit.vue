@@ -1,5 +1,5 @@
 <template>
-	<tr :class="{ edit, editing: editing == true }">
+	<tr :class="{ editing: editing == true }">
 		<td>
 			<input
 				type="text"

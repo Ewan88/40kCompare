@@ -84,12 +84,6 @@ th {
 	}
 }
 
-.red {
-	&:hover {
-		color: red;
-	}
-}
-
 h2 {
 	border-bottom: 1px solid var(--color-heading);
 	margin: 0 0 20px;
