@@ -1,52 +1,84 @@
 <template>
-	<td>
-		<input type="text" v-model="Weapon" @keyup.enter="addWeapon" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Range" @keyup.enter="addWeapon" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Attacks" @keyup.enter="addWeapon" />
-	</td>
-	<td>
-		<input
-			type="number"
-			v-model.number="BallisticSkill"
-			@keyup.enter="addWeapon"
-		/>
-	</td>
-	<td>
-		<input type="number" v-model.number="Strength" @keyup.enter="addWeapon" />
-	</td>
-	<td>
-		<input
-			type="number"
-			v-model.number="ArmourPiercing"
-			@keyup.enter="addWeapon"
-		/>
-	</td>
-	<td>
-		<input type="number" v-model.number="Damage" @keyup.enter="addWeapon" />
-	</td>
-	<td>
-		<input type="text" v-model="Abilities" @keyup.enter="addWeapon" />
-	</td>
-	<td v-if="Weapon !== ''" class="button green" @click="addWeapon">✅</td>
+	<tr :class="{ editing: editing == true }">
+		<td>
+			<input
+				type="text"
+				v-model="Weapon"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Range"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Attacks"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="BallisticSkill"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Strength"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="ArmourPiercing"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Damage"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="text"
+				v-model="Abilities"
+				@keyup.enter="addWeapon"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td v-if="Weapon !== ''" class="button green" @click="addWeapon">✅</td>
+	</tr>
 </template>
 
 <style scoped>
 	td {
 		padding: 0;
-
-		&:hover,
-		&:focus {
-			outline: 1px solid #7c7c7c;
-		}
-
-		&:last-child:hover,
-		&:last-child:focus {
-			outline: none;
-		}
 	}
 
 	.button {
@@ -68,6 +100,7 @@
 				ArmourPiercing: 0,
 				Damage: 0,
 				Abilities: '',
+				editing: false,
 			};
 		},
 		created() {

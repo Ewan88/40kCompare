@@ -1,58 +1,103 @@
 <template>
-	<td>
-		<!-- Input field with event listener -->
-		<input type="text" v-model="Unit" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Movement" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Toughness" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Save" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Wounds" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Leadership" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input
-			type="number"
-			v-model.number="ObjectiveControl"
-			@keyup.enter="addUnit"
-		/>
-	</td>
-	<td>
-		<input type="text" v-model="Abilities" @keyup.enter="addUnit" />
-	</td>
-	<td>
-		<input type="number" v-model.number="Points" @keyup.enter="addUnit" />
-	</td>
-	<td v-if="Unit !== '' && Points !== 0" class="button green" @click="addUnit">
-		✅
-	</td>
+	<tr :class="{ edit, editing: editing == true }">
+		<td>
+			<input
+				type="text"
+				v-model="Unit"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Movement"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Toughness"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Save"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Wounds"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Leadership"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="ObjectiveControl"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="text"
+				v-model="Abilities"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td>
+			<input
+				type="number"
+				v-model.number="Points"
+				@keyup.enter="addUnit"
+				@focus="editing = true"
+				@blur="editing = false"
+			/>
+		</td>
+		<td class="button green" @click="addUnit">
+			<div v-if="Unit !== '' && Points !== 0">✔</div>
+		</td>
+	</tr>
 </template>
 
 <style scoped>
 	td {
 		padding: 0;
-
-		&:hover,
-		&:focus {
-			outline: 1px solid #7c7c7c;
-		}
-
-		&:last-child:hover,
-		&:last-child:focus {
-			outline: none;
-		}
 	}
 
 	.button {
-		padding-left: 17px;
+		padding-left: 20px;
+
+		&:hover {
+			color: green;
+		}
 	}
 </style>
 
@@ -70,6 +115,7 @@
 				ObjectiveControl: 0,
 				Abilities: '',
 				Points: 0,
+				editing: false,
 			};
 		},
 		created() {

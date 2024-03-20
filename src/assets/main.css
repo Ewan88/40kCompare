@@ -53,7 +53,6 @@ input {
 	&:focus,
 	&:hover {
 		outline: none;
-		color: var(--vt-c-text-dark-1);
 	}
 }
 
@@ -72,14 +71,7 @@ td {
 th {
 	color: var(--vt-c-text-light-1);
 	text-transform: uppercase;
-
-	&:last-child {
-		border: none;
-	}
-
-	&:first-child {
-		border: none;
-	}
+	border: none;
 }
 
 .button {
@@ -98,13 +90,15 @@ th {
 	}
 }
 
-.green {
-	&:hover {
-		color: green;
-	}
-}
-
 h2 {
 	border-bottom: 1px solid var(--color-heading);
 	margin: 0 0 20px;
+}
+
+.editing > td {
+	outline: 1px solid #7c7c7c;
+
+	&:last-child {
+		outline: none;
+	}
 }

@@ -11,9 +11,7 @@
 				<th>D</th>
 				<th></th>
 			</tr>
-			<tr>
-				<AddWeapon @add-weapon="addWeaponToList" />
-			</tr>
+			<AddWeapon @add-weapon="addWeaponToList" />
 			<tr v-for="(weapon, index) in weapons" :key="index">
 				<WeaponCard
 					:weapon="weapon"

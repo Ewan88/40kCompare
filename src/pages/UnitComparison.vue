@@ -1,6 +1,9 @@
 <template>
 	<table>
 		<tr>
+			<td colspan="8" class="hidden break">Add Unit</td>
+		</tr>
+		<tr>
 			<th></th>
 			<th>M</th>
 			<th>T</th>
@@ -11,8 +14,13 @@
 			<th></th>
 			<th>pts</th>
 		</tr>
+		<AddUnit
+			@add-unit="addUnitToList"
+			@input-focus="editing = true"
+			@input-blur="editing = false"
+		/>
 		<tr>
-			<AddUnit @add-unit="addUnitToList" />
+			<td colspan="8" class="hidden break">Unit List</td>
 		</tr>
 		<tr v-for="(unit, index) in units" :key="index">
 			<UnitCard :unit="unit" @delete-unit="deleteUnitFromList(index)" />
@@ -27,6 +35,10 @@
 <style scoped>
 	.hidden {
 		border: none;
+	}
+
+	.break {
+		padding-top: 20px;
 	}
 
 	.total {
